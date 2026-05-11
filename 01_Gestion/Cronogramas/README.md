@@ -21,10 +21,10 @@ El **Teleférico del Café** es un sistema embebido de pesaje agroindustrial dis
 - **Microcontrolador:** LilyGo TTGO LoRa32 (ESP32 + SX1276 915MHz)
 - **Comunicación:** LoRa 915MHz (SF7, BW 125kHz) · WiFi HTTP
 - **Lenguaje Core:** C/C++ (Arduino Framework)
-- **Sensor de Peso:** Potenciómetro 10kΩ — ADC 12 bits, resolución 0.1g
+- **Sensor de Peso:** Módulo HX711 (ADC 24 bits) + Celda de Carga 5 kg — DOUT→GPIO13, SCK→GPIO2, resolución ≤ 0.1g
 - **Actuador:** Motor DC con driver L298N — control PWM
 - **Interfaz:** LCD 16x2 I2C (PCF8574, dirección 0x27)
-- **Librerías:** LoRa (Sandeep Mistry) · LiquidCrystal I2C · ArduinoJson v6 · HTTPClient
+- **Librerías:** LoRa (Sandeep Mistry) · LiquidCrystal I2C · ArduinoJson v6 · HTTPClient · HX711 (Bogdan Necula)
 
 ---
 
@@ -32,7 +32,7 @@ El **Teleférico del Café** es un sistema embebido de pesaje agroindustrial dis
 Estado actual de los entregables obligatorios para la sustentación final:
 
 - [x] **Gestión:** Cronograma actualizado, bitácoras semanales y metodologías de trabajo en equipo.
-- [x] **Hardware:** Conexiones LilyGo A + LCD + L298N + Motor + Botones + Potenciómetro.
+- [x] **Hardware:** Conexiones LilyGo A + LCD + L298N + Motor + Botones + HX711 + Celda de Carga 5 kg.
 - [x] **Firmware:** Código fuente v23 estable con manejo de dependencias y anti-rebote BTN_STOP.
 - [x] **Comunicación:** Transmisión LoRa 915MHz verificada a 50m en campo abierto.
 - [x] **Pruebas de Campo:** 10 ciclos consecutivos sin fallos. Validación LoRa a 30m con obstáculos.
@@ -64,7 +64,7 @@ gantt
 
     section Fase 2 Firmware
     WiFi y HTTP                :done, dev1, 2026-03-13, 7d
-    Pesaje ADC                 :done, dev2, 2026-03-20, 7d
+    Pesaje HX711               :done, dev2, 2026-03-20, 7d
     Motor DC L298N             :done, dev3, 2026-03-27, 7d
     Boton Emergencia GPIO13    :done, dev4, 2026-04-03, 7d
     Evaluacion Sem9            :milestone, done, m2, 2026-04-07, 1d
