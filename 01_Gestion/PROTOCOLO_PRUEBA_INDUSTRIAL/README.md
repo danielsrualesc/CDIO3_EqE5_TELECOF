@@ -2,9 +2,7 @@
 **Version:** 1.0 | **Fecha de actualizacion:** 2026-05-18
 **Equipo:** Erick S. Cruz Silva / Rohin H. Suarez Gallego / Daniel S. Ruales Cuaran / Kevin E. Aragon Camacho
 
-&gt; Este protocolo ha sido diligenciado y ejecutado. Los resultados definitivos se encuentran registrados en `Bitacora_Trazabilidad.csv`.
 
----
 
 ## TEST-HW-01 -- Validacion Dimensional PCB (KiCad)
 **Prioridad:** P1 Alto | **Requisito:** REQ-HW-01 | **Estado:** PASS
