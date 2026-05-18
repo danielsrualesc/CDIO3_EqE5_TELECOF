@@ -9,7 +9,7 @@ El **Dashboard MAHD** es la herramienta centralizada de control, seguimiento y v
 Este tablero permite consolidar la documentación técnica, evidencias experimentales, validaciones de funcionamiento y pruebas realizadas sobre la maqueta y el sistema automatizado del teleférico, asegurando la trazabilidad completa del proceso de diseño e implementación.
 
 🔗 **Dashboard MAHD — Google Sheets**  
-:contentReference[oaicite:0]{index=0}
+https://docs.google.com/spreadsheets/d/1BPqoi0OXagbAaEim1T4lUMFV-VwAkPPGX0HjGa50tf4/edit?gid=1975843790#gid=1975843790
 
 ---
 
