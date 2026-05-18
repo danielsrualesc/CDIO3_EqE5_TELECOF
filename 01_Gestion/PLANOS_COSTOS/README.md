@@ -43,7 +43,7 @@ Sistema embebido de pesaje agroindustrial para la automatizacion del registro de
 
 &gt; Nota critica: GPIO13 fue reasignado de BTN_STOP a HX711 DOUT en firmware v23. BTN_STOP se movio a GPIO4 con pull-down externo + hold 400ms para eliminar activaciones falsas en boot.
 
-&gt; Archivo KiCad: `PCBtelecof.kicad_pcb` -- Repositorio: `/5_Resultados_Diseno/`
+&gt; Archivo KiCad: `PCBtelecof.kicad_pcb` -- Repositorio: `/HARDWARE/`
 
 ---
 
@@ -101,10 +101,10 @@ Sistema embebido de pesaje agroindustrial para la automatizacion del registro de
 
 | Archivo | Descripcion | Ubicacion |
 |---|---|---|
-| `PCBtelecof.kicad_pcb` | Esquematico PCB en KiCad | GitHub `/5_Resultados_Diseno/` |
-| `Manual_Tecnico_Telecof.pdf` | Manual tecnico completo (TDC-MT-01 Rev 1.0) | GitHub `/5_Resultados_Diseno/` |
+| `PCBtelecof.kicad_pcb` | Esquematico PCB en KiCad | GitHub `/HARDWARE/` |
+| `Manual_Tecnico_Telecof.pdf` | Manual tecnico completo (TDC-MT-01 Rev 1.0) | GitHub `/01_GESTION/MANUALES/` |
 | `Dashboard_MAHD.xlsx` | Dashboard de seguimiento MAHD | GitHub (raiz) |
-| `Protocolos_de_prueba.xlsx` | Protocolos V&V formales | GitHub `/4_Calidad_y_Pruebas/` |
+| `Protocolos_de_prueba.xlsx` | Protocolos V&V formales | GitHub `/PROTOCOLO_PRUEBAS/` |
 
 ---
 
