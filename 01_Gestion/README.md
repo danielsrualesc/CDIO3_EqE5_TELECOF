@@ -1,41 +1,85 @@
-# Validacion Final y Entrega del Producto Teleferico del Cafe
+# Gestion del Proyecto Teleferico del Cafe:
 
-**Proyecto:** Teleferico del Cafe - Sistema Embebido de Pesaje Agroindustrial
-**Cliente / Usuario Final:** Operarios de recoleccion de cafe y administrador de finca (Universidad del Quindio - CDIO III)
-**Ingenieros a Cargo:** Erick S. Cruz Silva, Rohin H. Suarez Gallego, Daniel S. Ruales Cuaran, Kevin E. Aragon Camacho
-**Fecha de Entrega:** Mayo 2026
+Este directorio centraliza la documentacion administrativa, planificacion y analisis de requisitos del sistema **Teleferico del Cafe** (Sistema Embebido de Pesaje Agroindustrial para Recoleccion de Cafe).
+
+**Institucion:** Universidad del Quindio.
+**Programa:** Ingenieria Electronica (Sexto Semestre)
+**Ubicacion:** Armenia, Quindio, Colombia.
+**Duracion:** 1 Semestre (CDIO III).
+---
+
+## Alcance del Proyecto:
+
+El objetivo es desarrollar un sistema embebido de dos nodos capaz de automatizar el registro de pesaje de cafe recolectado, calcular el pago al trabajador y transmitir los datos via LoRa desde el campo hasta la oficina de administracion.
+
+### Objetivos Especificos (KPIs)
+1.  **Captura de Peso:** Medicion con resolucion de 0.1 g en rango 0 -- 5.000 g.
+2.  **Calculo de Pago:** Conversion automatica a COP con tarifa 1.200 COP/kg.
+3.  **Transmision Inalambrica:** Envio de datos via LoRa 915 MHz a 50 m campo abierto.
+4.  **Autonomia:** Operacion continua &gt;= 4 horas sin recarga.
+5.  **Costo:** Presupuesto total entre $250.000 y $300.000 COP.
 
 ---
 
-## 1. Resumen de Entrega
-Este documento oficializa la culminacion y entrega del proyecto **Teleferico del Cafe**. Tras un ciclo de desarrollo iterativo basado en la metodologia CDIO (Concebir, Disenar, Implementar, Operar), el sistema ha pasado de ser un concepto a una herramienta tecnologica validada y funcional en un entorno real de recoleccion de cafe. Las pruebas de campo y la retroalimentacion final del cliente confirman el exito rotundo de la implementacion.
+## Roadmap de Implementacion:
 
-## 2. Pruebas de Campo Reales (Operacion)
-Las pruebas finales se ejecutaron en la finca experimental de la Universidad del Quindio con la participacion directa de operarios de recoleccion de cafe y el administrador de finca, sometiendo el dispositivo a condiciones reales de cosecha.
+El proyecto se ejecuta en un semestre segun los lineamientos academicos del curso CDIO III:
 
-### 2.1. Condiciones de Prueba
-* **Entorno:** Finca experimental al aire libre, temperatura 28 C, humedad 75%.
-* **Implemento:** Nodo A (Transmisor) con celda de carga 5 kg, motor DC simulando teleferico, LCD 16x2 y 3 botones. Nodo B (Receptor) en oficina de administracion.
-* **Procedimiento:** El operario selecciono su nombre, coloco cafe recolectado en la canastilla sobre la celda de carga, espero 10 s de pesaje, confirmo el resultado, y el sistema activo el motor transportador. Al finalizar, el paquete LoRa se transmitio automaticamente al Nodo B.
-* **Captura de Datos:** El Nodo A registro peso y pago en LCD. El Nodo B recibio paquetes LoRa y almaceno registros en RAM para descarga HTTP.
+### Fase Unica: Hardware, Firmware y Conectividad (Semestre Actual)
+| Semanas | Hito / Entregable | Estado |
+| :--- | :--- | :--- |
+| **1-4** | Adquisicion de componentes (LilyGo TTGO x2, HX711, celda 5kg, L298N, LCD 16x2, motor DC). | Hecho |
+| **5-8** | Integracion de modulo de pesaje (HX711 + celda), pantalla LCD 16x2 I2C y botones (NOMBRE, OK, STOP). | Hecho |
+| **9-12** | Implementacion de motor DC con L298N (teleferico simulado), FSM de 9 estados y comunicacion LoRa 915 MHz. | Hecho |
+| **13-16** | Pruebas de campo, calibracion de pesaje, validacion de alcance LoRa y documentacion final. | Hecho |
 
-### 2.2. Resultados de la Validacion Tecnica
-* **Precision de Pesaje:** El HX711 24 bits con celda de carga 5 kg registro pesos con resolucion de 0.1 g, validado con pesas patron de 100 g, 500 g, 1000 g, 2000 g y 5000 g. Desviacion maxima: +/- 0.2 g en carga maxima.
-* **Integridad Fisica:** La carcasa PLA+ (120 mm x 80 mm x 45 mm) protegio el hardware durante 4 horas continuas de operacion en campo sin deterioro estructural.
-* **Transmision Inalambrica:** El envio de paquetes LoRa 915 MHz desde Nodo A (campo) a Nodo B (base) funciono a 50 m campo abierto (10/10 paquetes) y 30 m con obstaculos (9/10 paquetes), validando la independencia de internet.
-* **Autonomia:** El sistema opero 4 horas 30 minutos con fuente 5V externa, superando el requisito minimo de 4 horas.
-* **Emergencia:** El boton BTN_STOP (GPIO4) detuvo el motor inmediatamente en 3 pruebas consecutivas desde diferentes estados, con retorno proporcional al origen verificado.
+---
+## Matriz de Requisitos
 
-## 3. Retroalimentacion Final del Cliente (La Voz del Usuario)
-La evaluacion cualitativa del usuario final es el indicador definitivo del exito del Teleferico del Cafe. Las opiniones recopiladas durante la entrega destacan el impacto del producto:
+### Requisitos Funcionales (RF)
+* **RF-001:** Captura de peso con resolucion 0.1 g (HX711 24 bits, ganancia 128).
+* **RF-002:** Calculo automatico de pago en COP (tarifa 1.200 COP/kg).
+* **RF-003:** Seleccion de trabajador via boton NOMBRE (GPIO32).
+* **RF-004:** Ciclo de pesaje de 10 s con promedio de 10 muestras.
+* **RF-005:** Control de motor DC (adelante 1.350 ms, pausa 10 s, atras 1.350 ms).
+* **RF-006:** Transmision LoRa de paquete PESAJE,nombre,peso,pago al Nodo B.
+* **RF-007:** Visualizacion de peso y pago en LCD 16x2 I2C (direccion 0x27).
+* **RF-008:** Descarga de registros via HTTP GET /lista desde Nodo B.
+* **RF-009:** Modo autonomo con lista de respaldo hardcodeada (sin WiFi).
+* **RF-010:** Detencion de emergencia con BTN_STOP (GPIO4, hold 400 ms).
 
-* **Operario (Erick):** *"El sistema es facil de usar. Solo presiono mi nombre, pongo el cafe, espero unos segundos y ya se cuanto me van a pagar. El motor mueve la canastilla solo y no tengo que cargar nada pesado. Antes tenia que anotar todo en papel y a veces me confundia con los kilos."*
-* **Administrador:** *"Por fin tengo los datos de todos los trabajadores organizados en un CSV que abro en Excel. No necesito internet en el campo porque el sistema usa radio. Puedo ver cuanto pago a cada uno sin estar pendiente de papeles. Los numeros coinciden con la balanza de la finca."*
-* **Operario (Oscar):** *"El boton rojo de emergencia me da confianza. Una vez se atoro la cuerda del teleferico y lo detuve rapido. El motor volvio solo al inicio y no perdi el cafe que ya habia pesado."*
+### Requisitos No Funcionales (RNF)
+* **RNF-001 Precision:** Error maximo de pesaje +/- 0.2 g en carga maxima (5 kg).
+* **RNF-002 Portabilidad:** Peso total Nodo A &lt;= 300 g, Nodo B &lt;= 100 g.
+* **RNF-003 Resistencia Ambiental:** Operacion en clima de Quindio (0 C - 50 C, humedad 10-90% RH).
+* **RNF-004 Recuperabilidad:** Sistema autonomo ante falla de WiFi (lista respaldo en 20 s).
+* **RNF-005 Seguridad:** Detencion de emergencia desde cualquier estado motor activo.
+* **RNF-006 Usabilidad:** Interfaz LCD con mensajes en espanol, formato 1 decimal unificado.
 
-## 4. Evidencia Multimedia
-Para respaldar este hito, se adjunta el siguiente archivo en el repositorio:
-* `PRUEBASISTEMACOMPLETO.MP4`: Material audiovisual con las declaraciones y opiniones de primera mano de los operarios y el administrador tras utilizar el sistema, junto con demostracion completa del ciclo de pesaje, motor teleferico y transmision LoRa en campo real.
+---
 
-## 5. Cierre de Proyecto
-Con la validacion tecnica en campo y la aprobacion entusiasta del cliente, el equipo de ingenieria declara el proyecto **Teleferico del Cafe** como exitosamente entregado. El producto cumple a cabalidad con la Matriz de Requisitos, el Definition of Done y soluciona un problema latente en la recoleccion de cafe de forma profesional e innovadora.
+## Presupuesto y Recursos
+
+**Presupuesto Estimado:** $250.000 - $300.000 COP.
+
+### Componentes Principales (BOM)
+* **Microcontrolador:** LilyGo TTGO LoRa32 V2.1 (ESP32 dual-core + SX1276) x2 unidades.
+* **Modulo de Pesaje:** HX711 24 bits + Celda de carga 5 kg (strain gauge).
+* **Interfaz:** LCD 16x2 I2C (PCF8574) + 3 botones pulsadores 6x6 mm.
+* **Actuador:** Motor DC 5V + Driver L298N (control PWM 1 kHz).
+* **Energia:** Fuente 5V via USB-C (regulador interno 3.3V ESP32).
+* **Comunicacion:** LoRa 915 MHz (antenas SMA integradas en LilyGo).
+* **Carcasa:** Impresion 3D PLA+ (120 mm x 80 mm x 45 mm).
+
+---
+
+## Gestion de Riesgos y Restricciones
+1.  **Conectividad:** La red WiFi en campo no es garantizada. Se mitiga con operacion autonoma (lista respaldo) y transmision LoRa independiente de internet.
+2.  **Clima:** La alta humedad del Quindio requiere proteccion de la PCB y celda de carga contra condensacion (carcasa PLA+ cerrada).
+3.  **Vibracion:** El motor DC genera vibraciones que pueden afectar la lectura del HX711. Se mitiga con promedio de 10 muestras y estabilizacion mecanica.
+4.  **Peso maximo:** La celda de carga soporta maximo 5 kg. Se debe educar al operario para no exceder este limite.
+5.  **GPIO boot:** GPIO13 y GPIO2 tienen comportamiento especial en boot del ESP32. Se mitiga con reasignacion de pines (BTN_STOP a GPIO4) y verificacion de inicializacion.
+
+---
+
+*Documento basado en la especificacion de requisitos v1.0 (Febrero 2026).*
