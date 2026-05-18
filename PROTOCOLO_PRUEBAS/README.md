@@ -3,7 +3,7 @@
 Este directorio contiene los reportes oficiales de pruebas ejecutadas para el proyecto **Teleférico de Café**. Todas las validaciones realizadas siguen un enfoque basado en **datos medibles, pruebas funcionales y criterios técnicos verificables**, permitiendo garantizar el correcto funcionamiento del sistema electromecánico desarrollado.
 
 > 📊 **Documento Oficial:**  
-> :contentReference[oaicite:0]{index=0}
+https://docs.google.com/spreadsheets/d/1aRgyDsrhHfRh4J8zUgCT-kbOG-oivHNOT2VnL4wlNOE/edit?gid=0#gid=0
 
 ---
 
