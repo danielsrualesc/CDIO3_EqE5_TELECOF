@@ -108,4 +108,4 @@ Sistema embebido de pesaje agroindustrial para la automatizacion del registro de
 
 ---
 
-*Open Academic License -- Universidad del Quindio 2026*
+
